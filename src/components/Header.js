@@ -53,8 +53,8 @@ function Header() {
             alt='United States'></img>
 
           <select>
-            <option>English - EN</option>
-            <option>Español - ES</option>
+            <option>EN</option>
+            <option>ES</option>
           </select>
         </HeaderOption>
         <HeaderOption>
@@ -149,6 +149,7 @@ const HeaderCenter = styled.div`
     padding: 10px;
     border: none;
     width: 100%;
+    background-color: white;
   }
   & > select {
     align-items: center;
