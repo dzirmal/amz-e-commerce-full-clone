@@ -1,22 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useStateValue } from '../stateProvider/StateProvider';
+
 import styled from 'styled-components';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { auth } from '../firebase';
 
 function Header() {
+  const [{ cart, user }, dispatch] = useStateValue();
+
+  const signOut = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
+
   return (
     <HeaderContainer>
       <HeaderLeft>
         <div className='menu'>
           <MenuIcon />
         </div>
-        <Logo
-          src='http://pngimg.com/uploads/amazon/amazon_PNG25.png'
-          alt='Amazon Loge'
-        />
+        <Links to='/'>
+          <Logo
+            src='http://pngimg.com/uploads/amazon/amazon_PNG25.png'
+            alt='Amazon Loge'
+          />
+        </Links>
         <div className='delivery__location'>
           <LocationOnOutlinedIcon style={{ alignItems: 'center' }} />
           <HeaderOption>
@@ -57,18 +72,28 @@ function Header() {
             <option>ES</option>
           </select>
         </HeaderOption>
-        <HeaderOption>
-          <span className='header__option__lineOne'>Hello Maiwand</span>
-          <span className='header__option__lineTwo'>Sign In</span>
-        </HeaderOption>
+        <Links to={!user && '/login'}>
+          <HeaderOption onClick={signOut}>
+            <span className='header__option__lineOne'>Hello {user?.email}</span>
+            <span className='header__option__lineTwo'>
+              {user ? 'Sing Out' : 'Sign In'}
+            </span>
+          </HeaderOption>
+        </Links>
         <HeaderOption>
           <span className='header__option__lineOne'>Returns</span>
           <span className='header__option__lineTwo'>& Orders</span>
         </HeaderOption>
-        <HeaderOption>
-          <span className='header__option__cartCount'>0</span>
-          <ShoppingCartOutlinedIcon />
-        </HeaderOption>
+        <Links to='/checkout'>
+          <HeaderOption>
+            <span className='header__option__cartCount'>{cart?.length}</span>
+            {cart?.length > 0 ? (
+              <ShoppingCartIcon />
+            ) : (
+              <ShoppingCartOutlinedIcon />
+            )}
+          </HeaderOption>
+        </Links>
       </HeaderRight>
     </HeaderContainer>
   );
@@ -163,4 +188,8 @@ const HeaderCenter = styled.div`
 const HeaderRight = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const Links = styled(Link)`
+  text-decoration: none;
 `;
