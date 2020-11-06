@@ -1,33 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import CurrencyFormat from 'react-currency-format';
 import { useStateValue } from '../stateProvider/StateProvider';
-import { getCartTotal } from '../stateProvider/reducer';
+import { useHistory } from 'react-router';
+import CurFormat from './CurFormat';
 
 function Subtotal() {
+  const history = useHistory();
   const [{ cart }, dispatch] = useStateValue();
 
   return (
     <SubtotalContainer>
-      <CurrencyFormat
-        renderText={(value) => (
-          <>
-            <p>
-              Subtotal ({cart?.length} {cart?.length > 1 ? 'items' : 'item'}) :{' '}
-              <strong> {value}</strong>
-            </p>
-            <small style={{ display: 'flex', alignItems: 'center' }}>
-              <input style={{ marginRight: '5px' }} type='checkbox' /> This
-              order contains a gift
-            </small>
-          </>
-        )}
-        decimalScale={2}
-        value={getCartTotal(cart)}
-        displayType={'text'}
-        prefix={'$'}
-      />
-      <Button>Proceed to Checkout</Button>
+      <CurFormat />
+      <Button onClick={(e) => history.push('/payment')}>
+        Proceed to Checkout
+      </Button>
     </SubtotalContainer>
   );
 }

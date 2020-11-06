@@ -74,7 +74,9 @@ function Header() {
         </HeaderOption>
         <Links to={!user && '/login'}>
           <HeaderOption onClick={signOut}>
-            <span className='header__option__lineOne'>Hello {user?.email}</span>
+            <span className='header__option__lineOne'>
+              Hello {!user ? 'Guest' : user?.email}
+            </span>
             <span className='header__option__lineTwo'>
               {user ? 'Sing Out' : 'Sign In'}
             </span>

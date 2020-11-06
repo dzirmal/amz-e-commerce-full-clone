@@ -13,7 +13,6 @@ function CheckoutProduct({ title, image, price, rating, id }) {
     });
   };
 
-  console.log(cart);
   return (
     <Container key={id}>
       <img src={image} alt={title} />
