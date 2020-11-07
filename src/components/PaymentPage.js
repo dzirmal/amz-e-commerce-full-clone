@@ -6,7 +6,7 @@ import CheckoutProduct from './CheckoutProduct';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurFormat from './CurFormat';
 import { getCartTotal } from '../stateProvider/reducer';
-import axios from '../axios';
+import axios from '../axios.js';
 
 function Payment({ title, image, price, rating, id }) {
   const [{ cart, user }, dispatch] = useStateValue();
@@ -23,13 +23,16 @@ function Payment({ title, image, price, rating, id }) {
   useEffect(() => {
     const getClientSecret = async () => {
       const response = await axios({
-        method: 'post',
+        method: 'POST',
         url: `/payments/create?total=${getCartTotal(cart) * 100}`,
       });
       setClientSecret(response.data.clientSecret);
     };
     getClientSecret();
+    console.log('axios', axios);
   }, [cart]);
+
+  console.log('the secret is ', clientSecret);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,6 +49,7 @@ function Payment({ title, image, price, rating, id }) {
         setProcessing(false);
         history.replace('/orders');
       });
+    console.log('payload', payload);
   };
 
   const handleChange = (event) => {

@@ -23,7 +23,6 @@ function App() {
   // This is the listener for to keep track who is logged in
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log(authUser);
       if (authUser) {
         dispatch({ type: 'SET_USER', user: authUser });
       } else {
