@@ -23,13 +23,12 @@ function Payment({ title, image, price, rating, id }) {
   useEffect(() => {
     const getClientSecret = async () => {
       const response = await axios({
-        method: 'POST',
+        method: 'post',
         url: `/payments/create?total=${getCartTotal(cart) * 100}`,
       });
       setClientSecret(response.data.clientSecret);
     };
     getClientSecret();
-    console.log('axios', axios);
   }, [cart]);
 
   console.log('the secret is ', clientSecret);
