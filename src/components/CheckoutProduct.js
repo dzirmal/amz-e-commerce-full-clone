@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { star } from '../stateProvider/reducer';
 import { useStateValue } from '../stateProvider/StateProvider';
 
-function CheckoutProduct({ title, image, price, rating, id }) {
+function CheckoutProduct({ title, image, price, rating, id, hiddenButton }) {
   const [{ cart }, dispatch] = useStateValue();
 
   const removeFromCart = () => {
@@ -29,7 +29,9 @@ function CheckoutProduct({ title, image, price, rating, id }) {
               <p key={id}>{star}</p>
             ))}
         </Rating>
-        <Button onClick={removeFromCart}>Remove from Cart</Button>
+        {!hiddenButton && (
+          <Button onClick={removeFromCart}>Remove from Cart</Button>
+        )}
       </CheckoutProductInfo>
     </Container>
   );

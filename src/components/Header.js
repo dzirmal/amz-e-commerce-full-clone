@@ -82,10 +82,12 @@ function Header() {
             </span>
           </HeaderOption>
         </Links>
-        <HeaderOption>
-          <span className='header__option__lineOne'>Returns</span>
-          <span className='header__option__lineTwo'>& Orders</span>
-        </HeaderOption>
+        <Links to='/orders'>
+          <HeaderOption>
+            <span className='header__option__lineOne'>Returns</span>
+            <span className='header__option__lineTwo'>& Orders</span>
+          </HeaderOption>
+        </Links>
         <Links to='/checkout'>
           <HeaderOption>
             <span className='header__option__cartCount'>{cart?.length}</span>

@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { useStateValue } from '../stateProvider/StateProvider';
 import CheckoutProduct from './CheckoutProduct';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import CurFormat from './CurFormat';
 import { getCartTotal } from '../stateProvider/reducer';
-import axios from '../axios.js';
+import axios from '../axios';
+import { db } from '../firebase';
+import CurrencyFormat from 'react-currency-format';
 
 function Payment({ title, image, price, rating, id }) {
   const [{ cart, user }, dispatch] = useStateValue();
@@ -31,11 +32,13 @@ function Payment({ title, image, price, rating, id }) {
     getClientSecret();
   }, [cart]);
 
-  console.log('the secret is ', clientSecret);
+  // console.log('the secret is ', clientSecret);
+  // console.log('user', user);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setProcessing(true);
+
     const payload = await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
@@ -46,9 +49,21 @@ function Payment({ title, image, price, rating, id }) {
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+        dispatch({ type: 'EMPTY_CART' });
+
+        // Dispatch the data to the firebase and create a new table of order for the user.
+        db.collection('users')
+          .doc(user?.uid)
+          .collection('orders')
+          .doc(paymentIntent.id)
+          .set({
+            cart: cart,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
         history.replace('/orders');
       });
-    console.log('payload', payload);
+    // console.log('payload', payload);
   };
 
   const handleChange = (event) => {
@@ -99,8 +114,23 @@ function Payment({ title, image, price, rating, id }) {
             <Form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
               <div>
-                <CurFormat />
-                <Button disabled={processing || disabled || succeeded}>
+                <CurrencyFormat
+                  renderText={(value) => (
+                    <>
+                      <h3 style={{ fontWeight: '500' }}>
+                        Order Total: {value}
+                      </h3>
+                    </>
+                  )}
+                  decimalScale={2}
+                  value={getCartTotal(cart)}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={'$'}
+                />
+                <Button
+                  type='submit'
+                  disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing...</p> : 'Buy Now'}</span>
                 </Button>
               </div>
@@ -150,7 +180,9 @@ const PaymentSection = styled.div`
   }
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+  max-width: 400px;
+`;
 
 const Links = styled(Link)`
   text-decoration: none;
@@ -159,10 +191,13 @@ const Links = styled(Link)`
 
 const Button = styled.button`
   background-color: #f0c14b;
+  width: 100%;
+  height: 30px;
   border-radius: 2px;
   border: 1px solid;
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   color: black;
+  font-weight: bolder;
   cursor: pointer;
 `;

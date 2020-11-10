@@ -31,6 +31,11 @@ const reducer = (state, action) => {
         // give me the cart and the new item
         cart: [...state.cart, action.item],
       };
+    case 'EMPTY_CART':
+      return {
+        ...state,
+        cart: [],
+      };
     case 'REMOVE_FROM_CART':
       // Logic for removing item from cart
 
@@ -51,6 +56,7 @@ const reducer = (state, action) => {
           `Can't remove product (id: ${action.id}) as its not in cart`
         );
       }
+
       return { ...state, cart: newCart };
     default:
       return state;

@@ -24,7 +24,7 @@ app.get('/', (request, response) =>
 // The total const is a query and it comes from the PaymentPage.js of the project after the ? mark
 app.post('/payments/create', async (request, response) => {
   const total = request.query.total;
-  console.log('Payment request received for this amount', total);
+  console.log('Payment request received for this amount BOOM!!!', total);
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total, // subunits fo the currency
     currency: 'usd',
