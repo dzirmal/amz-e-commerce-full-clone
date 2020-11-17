@@ -1,24 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useStateValue } from '../stateProvider/StateProvider';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useStateValue } from '../stateProvider/StateProvider'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import MenuIcon from '@material-ui/icons/Menu';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { auth } from '../firebase';
+import MenuIcon from '@material-ui/icons/Menu'
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import { auth } from '../firebase'
+import { getQuantityInCart } from '../stateProvider/reducer'
 
 function Header() {
-  const [{ cart, user }, dispatch] = useStateValue();
+  const [{ cart, user }, dispatch] = useStateValue()
 
   const signOut = () => {
     if (user) {
-      auth.signOut();
+      auth.signOut()
     }
-  };
+  }
 
   return (
     <HeaderContainer>
@@ -90,7 +91,9 @@ function Header() {
         </Links>
         <Links to='/checkout'>
           <HeaderOption>
-            <span className='header__option__cartCount'>{cart?.length}</span>
+            <span className='header__option__cartCount'>
+              {getQuantityInCart(cart)}
+            </span>
             {cart?.length > 0 ? (
               <ShoppingCartIcon />
             ) : (
@@ -100,10 +103,10 @@ function Header() {
         </Links>
       </HeaderRight>
     </HeaderContainer>
-  );
+  )
 }
 
-export default Header;
+export default Header
 
 const HeaderContainer = styled.div`
   height: 60px;
@@ -114,7 +117,7 @@ const HeaderContainer = styled.div`
   top: 0;
   z-index: 100;
   justify-content: space-between;
-`;
+`
 
 const HeaderLeft = styled.div`
   display: flex;
@@ -132,14 +135,14 @@ const HeaderLeft = styled.div`
       padding: 10px 10px;
     }
   }
-`;
+`
 
 const Logo = styled.img`
   width: 100px;
   object-fit: contain;
   margin: 0 20px;
   margin-top: 18px;
-`;
+`
 
 const HeaderOption = styled.div`
   display: flex;
@@ -165,7 +168,7 @@ const HeaderOption = styled.div`
     object-fit: contain;
     height: 30px;
   }
-`;
+`
 
 const HeaderCenter = styled.div`
   display: flex;
@@ -188,12 +191,12 @@ const HeaderCenter = styled.div`
     margin: 10px 10px 10px 7px;
     padding: 10px 10px;
   }
-`;
+`
 const HeaderRight = styled.div`
   display: flex;
   align-items: center;
-`;
+`
 
 const Links = styled(Link)`
   text-decoration: none;
-`;
+`

@@ -1,10 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useStateValue } from '../stateProvider/StateProvider';
-import { star } from '../stateProvider/reducer';
+import React from 'react'
+import styled from 'styled-components'
+import { useStateValue } from '../stateProvider/StateProvider'
+import { star } from '../stateProvider/reducer'
 
-function Product({ title, image, price, rating, id }) {
-  const [{ cart }, dispatch] = useStateValue();
+function Product({
+  product,
+  product: { title, image, price, rating, id, quantity = 1 },
+}) {
+  const [{ cart }, dispatch] = useStateValue()
 
   const addToCart = () => {
     // Dispatch the item to the data layer
@@ -16,9 +19,10 @@ function Product({ title, image, price, rating, id }) {
         image: image,
         price: price,
         rating: rating,
+        quantity: quantity,
       },
-    });
-  };
+    })
+  }
 
   return (
     <ProductContainer key={id}>
@@ -28,6 +32,7 @@ function Product({ title, image, price, rating, id }) {
           <small>$</small>
           <strong>{price}</strong>
         </p>
+        <div>Quantity: {quantity}</div>
         <div className='product__rating'>
           {Array(rating)
             .fill()
@@ -39,13 +44,13 @@ function Product({ title, image, price, rating, id }) {
       <Image src={image} alt='' />
       <Button onClick={addToCart}>Add to Cart</Button>
     </ProductContainer>
-  );
+  )
 }
 
-export default Product;
+export default Product
 
 const ProductContainer = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
@@ -55,8 +60,20 @@ const ProductContainer = styled.div`
   max-height: 400px;
   min-width: 100px;
   background-color: white;
+  z-index: 1; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 20px;
+  width: 300px;
+  height: flex;
+  background-color: white;
+  /* text-align: center; */
   z-index: 1;
-`;
+  justify-content: flex-end;
+`
 
 const ProductInfo = styled.div`
   height: 150px;
@@ -69,7 +86,7 @@ const ProductInfo = styled.div`
       margin-top: 5px;
     }
   }
-`;
+`
 
 const Image = styled.img`
   max-width: 500px;
@@ -78,7 +95,7 @@ const Image = styled.img`
   margin-bottom: 15px;
   background-color: white;
   max-height: 400px;
-`;
+`
 
 const Button = styled.button`
   background-color: #f0c14b;
@@ -88,4 +105,4 @@ const Button = styled.button`
   border-color: #a88734 #9c7e31 #846a29;
   color: black;
   cursor: pointer;
-`;
+`

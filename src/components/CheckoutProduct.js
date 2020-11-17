@@ -1,17 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
-import { star } from '../stateProvider/reducer';
-import { useStateValue } from '../stateProvider/StateProvider';
+import React from 'react'
+import styled from 'styled-components'
+import { star } from '../stateProvider/reducer'
+import { useStateValue } from '../stateProvider/StateProvider'
 
-function CheckoutProduct({ title, image, price, rating, id, hiddenButton }) {
-  const [{ cart }, dispatch] = useStateValue();
+function CheckoutProduct({
+  title,
+  image,
+  price,
+  rating,
+  id,
+  hiddenButton,
+  quantity,
+}) {
+  const [{ cart }, dispatch] = useStateValue()
 
   const removeFromCart = () => {
     dispatch({
       type: 'REMOVE_FROM_CART',
       id: id,
-    });
-  };
+    })
+  }
 
   return (
     <Container key={id}>
@@ -22,6 +30,7 @@ function CheckoutProduct({ title, image, price, rating, id, hiddenButton }) {
           <small>$</small>
           <strong>{price}</strong>
         </p>
+        <div>Quantity: {quantity}</div>
         <Rating>
           {Array(rating)
             .fill()
@@ -34,10 +43,10 @@ function CheckoutProduct({ title, image, price, rating, id, hiddenButton }) {
         )}
       </CheckoutProductInfo>
     </Container>
-  );
+  )
 }
 
-export default CheckoutProduct;
+export default CheckoutProduct
 
 const Container = styled.div`
   display: flex;
@@ -48,7 +57,7 @@ const Container = styled.div`
     width: 180px;
     height: 180px;
   }
-`;
+`
 
 const CheckoutProductInfo = styled.div`
   padding-left: 20px;
@@ -58,11 +67,11 @@ const CheckoutProductInfo = styled.div`
       font-weight: 800px;
     }
   }
-`;
+`
 
 const Rating = styled.div`
   display: flex;
-`;
+`
 
 const Button = styled.button`
   background-color: #f0c14b;
@@ -72,4 +81,4 @@ const Button = styled.button`
   border-color: #a88734 #9c7e31 #846a29;
   color: black;
   cursor: pointer;
-`;
+`

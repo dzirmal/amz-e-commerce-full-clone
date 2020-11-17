@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useStateValue } from '../stateProvider/StateProvider';
-import CheckoutProduct from './CheckoutProduct';
-import Subtotal from './Subtotal';
+import React from 'react'
+import styled from 'styled-components'
+import { useStateValue } from '../stateProvider/StateProvider'
+import CheckoutProduct from './CheckoutProduct'
+import Subtotal from './Subtotal'
 
 function Checkout() {
-  const [{ cart, user }, dispatch] = useStateValue();
+  const [{ cart, user }, dispatch] = useStateValue()
 
   return (
     <CheckoutContainer>
@@ -17,14 +17,15 @@ function Checkout() {
         <div>
           <h3>Hello, {user?.email}</h3>
           <h2>Your Shopping Cart</h2>
-          {cart.map((item, i) => (
+          {cart.map((item) => (
             <CheckoutProduct
-              key={i}
+              key={item.id}
               id={item.id}
               title={item.title}
               image={item.image}
               price={item.price}
               rating={item.rating}
+              quantity={item.quantity}
             />
           ))}
         </div>
@@ -33,17 +34,17 @@ function Checkout() {
         <Subtotal />
       </CheckoutRight>
     </CheckoutContainer>
-  );
+  )
 }
 
-export default Checkout;
+export default Checkout
 
 const CheckoutContainer = styled.div`
   display: flex;
   padding: 20px;
   background-color: white;
   height: max-content;
-`;
+`
 
 const CheckoutLeft = styled.div`
   & > div {
@@ -57,5 +58,5 @@ const CheckoutLeft = styled.div`
     width: 100%;
     margin-bottom: 10px;
   }
-`;
-const CheckoutRight = styled.div``;
+`
+const CheckoutRight = styled.div``

@@ -1,10 +1,11 @@
-import React from 'react';
-import { getCartTotal } from '../stateProvider/reducer';
-import CurrencyFormat from 'react-currency-format';
-import { useStateValue } from '../stateProvider/StateProvider';
+import React from 'react'
+import { getCartTotal } from '../stateProvider/reducer'
+import CurrencyFormat from 'react-currency-format'
+import { useStateValue } from '../stateProvider/StateProvider'
+import { getQuantityInCart } from '../stateProvider/reducer'
 
 function CurFormat() {
-  const [{ cart, user }, dispatch] = useStateValue();
+  const [{ cart, user }, dispatch] = useStateValue()
 
   return (
     <div>
@@ -12,7 +13,8 @@ function CurFormat() {
         renderText={(value) => (
           <>
             <p>
-              Subtotal ({cart?.length} {cart?.length > 1 ? 'items' : 'item'}) :{' '}
+              Subtotal ({getQuantityInCart(cart)}{' '}
+              {getQuantityInCart(cart) > 1 ? 'items' : 'item'}) :{' '}
               <strong> {value}</strong>
             </p>
             <small
@@ -36,7 +38,7 @@ function CurFormat() {
         prefix={'$'}
       />
     </div>
-  );
+  )
 }
 
-export default CurFormat;
+export default CurFormat

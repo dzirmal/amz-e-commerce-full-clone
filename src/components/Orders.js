@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { db } from '../firebase';
-import { useStateValue } from '../stateProvider/StateProvider';
-import Order from './Order';
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { db } from '../firebase'
+import { useStateValue } from '../stateProvider/StateProvider'
+import Order from './Order'
 
 function Orders() {
-  const [{ cart, user }, dispatch] = useStateValue();
-  const [orders, setOrders] = useState([]);
+  const [{ cart, user }, dispatch] = useStateValue()
+  const [orders, setOrders] = useState([])
 
   useEffect(() => {
     if (user) {
@@ -22,31 +22,31 @@ function Orders() {
               data: doc.data(),
             }))
           )
-        );
+        )
     } else {
-      setOrders([]);
+      setOrders([])
     }
-  }, [user]);
+  }, [user])
 
   return (
     <OrdersContainer>
       <h1>Your Orders</h1>
       <OrdersDiv>
-        {orders?.map((order, i) => (
-          <Order order={order} key={i} />
+        {orders?.map((order) => (
+          <Order order={order} key={order.id} />
         ))}
       </OrdersDiv>
     </OrdersContainer>
-  );
+  )
 }
 
-export default Orders;
+export default Orders
 
 const OrdersContainer = styled.div`
   padding: 20px 80px;
   & > h1 {
     margin: 30px 0;
   }
-`;
+`
 
-const OrdersDiv = styled.div``;
+const OrdersDiv = styled.div``
