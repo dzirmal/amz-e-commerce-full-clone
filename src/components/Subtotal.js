@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useStateValue } from '../stateProvider/StateProvider';
-import { useHistory } from 'react-router';
-import CurFormat from './CurFormat';
+import React from 'react'
+import styled from 'styled-components'
+import { useStateValue } from '../stateProvider/StateProvider'
+import { useHistory } from 'react-router'
+import CurFormat from './CurFormat'
 
 function Subtotal() {
-  const history = useHistory();
-  const [{ cart }, dispatch] = useStateValue();
+  const history = useHistory()
+  const [{ cart }, dispatch] = useStateValue()
 
   return (
     <SubtotalContainer>
@@ -15,10 +15,10 @@ function Subtotal() {
         Proceed to Checkout
       </Button>
     </SubtotalContainer>
-  );
+  )
 }
 
-export default Subtotal;
+export default Subtotal
 
 const SubtotalContainer = styled.div`
   display: flex;
@@ -30,7 +30,10 @@ const SubtotalContainer = styled.div`
   background-color: #f3f3f3;
   border: 1px solid #dddddd;
   border-radius: 3px;
-`;
+  top: 0;
+  position: sticky;
+  z-index: 100;
+`
 
 const Button = styled.button`
   background-color: #f0c14b;
@@ -42,4 +45,4 @@ const Button = styled.button`
   border-color: #a88734 #9c7e31 #846a29;
   color: black;
   cursor: pointer;
-`;
+`

@@ -25,7 +25,7 @@ function Header() {
     <HeaderContainer>
       <HeaderLeft>
         <div className='menu'>
-          <MenuIcon />
+          <MenuIcon style={{ color: '#fff' }} />
         </div>
         <Links to='/'>
           <Logo
@@ -190,6 +190,10 @@ const HeaderCenter = styled.div`
     border: 1px solid lightgray;
     margin: 10px 10px 10px 7px;
     padding: 10px 10px;
+    cursor: pointer;
+    & > option {
+      cursor: pointer;
+    }
   }
 `
 const HeaderRight = styled.div`

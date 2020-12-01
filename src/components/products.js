@@ -2,6 +2,48 @@ import { v4 as uuidv4 } from 'uuid'
 
 export const products = [
   {
+    id: 5,
+    title:
+      "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+    price: 695,
+    description:
+      "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
+    category: 'jewelery',
+    image: 'https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg',
+    rating: 5,
+  },
+  {
+    id: 12,
+    title:
+      'WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive',
+    price: 114,
+    description:
+      "Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
+    category: 'electronics',
+    image: 'https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg',
+    rating: 5,
+  },
+  {
+    id: 15,
+    title: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+    price: 56.99,
+    description:
+      'Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates',
+    category: 'women clothing',
+    image: 'https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg',
+    rating: 5,
+  },
+  {
+    id: 9,
+    title: 'WD 2TB Elements Portable External Hard Drive - USB 3.0 ',
+    price: 64,
+    description:
+      'USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system',
+    category: 'electronics',
+    image: 'https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg',
+    rating: 5,
+  },
+  {
     id: 1,
     title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
     price: 109.95,
@@ -23,16 +65,6 @@ export const products = [
     rating: 5,
   },
   {
-    id: 3,
-    title: 'Mens Cotton Jacket',
-    price: 55.99,
-    description:
-      'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
-    category: 'men clothing',
-    image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
-    rating: 5,
-  },
-  {
     id: 4,
     title: 'Mens Casual Slim Fit',
     price: 15.99,
@@ -42,27 +74,7 @@ export const products = [
     image: 'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
     rating: 5,
   },
-  {
-    id: 5,
-    title:
-      "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-    price: 695,
-    description:
-      "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
-    category: 'jewelery',
-    image: 'https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg',
-    rating: 5,
-  },
-  {
-    id: 6,
-    title: 'Solid Gold Petite Micropave ',
-    price: 168,
-    description:
-      'Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.',
-    category: 'jewelery',
-    image: 'https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg',
-    rating: 5,
-  },
+
   {
     id: 7,
     title: 'White Gold Plated Princess',
@@ -71,6 +83,16 @@ export const products = [
       "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
     category: 'jewelery',
     image: 'https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg',
+    rating: 5,
+  },
+  {
+    id: 3,
+    title: 'Mens Cotton Jacket',
+    price: 55.99,
+    description:
+      'great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.',
+    category: 'men clothing',
+    image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
     rating: 5,
   },
   {
@@ -84,13 +106,13 @@ export const products = [
     rating: 5,
   },
   {
-    id: 9,
-    title: 'WD 2TB Elements Portable External Hard Drive - USB 3.0 ',
-    price: 64,
+    id: 6,
+    title: 'Solid Gold Petite Micropave ',
+    price: 168,
     description:
-      'USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system',
-    category: 'electronics',
-    image: 'https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg',
+      'Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.',
+    category: 'jewelery',
+    image: 'https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg',
     rating: 5,
   },
   {
@@ -114,17 +136,7 @@ export const products = [
     image: 'https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg',
     rating: 5,
   },
-  {
-    id: 12,
-    title:
-      'WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive',
-    price: 114,
-    description:
-      "Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
-    category: 'electronics',
-    image: 'https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg',
-    rating: 5,
-  },
+
   {
     id: 13,
     title: 'Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin',
@@ -146,16 +158,7 @@ export const products = [
     image: 'https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg',
     rating: 5,
   },
-  {
-    id: 15,
-    title: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
-    price: 56.99,
-    description:
-      'Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates',
-    category: 'women clothing',
-    image: 'https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg',
-    rating: 5,
-  },
+
   {
     id: 16,
     title:

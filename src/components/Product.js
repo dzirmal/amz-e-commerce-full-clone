@@ -4,7 +4,6 @@ import { useStateValue } from '../stateProvider/StateProvider'
 import { star } from '../stateProvider/reducer'
 
 function Product({
-  product,
   product: { title, image, price, rating, id, quantity = 1 },
 }) {
   const [{ cart }, dispatch] = useStateValue()
@@ -50,18 +49,6 @@ function Product({
 export default Product
 
 const ProductContainer = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 10px;
-  padding: 20px;
-  width: 100%;
-  max-height: 400px;
-  min-width: 100px;
-  background-color: white;
-  z-index: 1; */
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,7 +57,6 @@ const ProductContainer = styled.div`
   width: 300px;
   height: flex;
   background-color: white;
-  /* text-align: center; */
   z-index: 1;
   justify-content: flex-end;
 `

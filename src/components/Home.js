@@ -41,5 +41,6 @@ const HomeDiv = styled.div``
 
 const HomeRow = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 `
