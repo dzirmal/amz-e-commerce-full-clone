@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { db } from '../firebase'
-import { useStateValue } from '../stateProvider/StateProvider'
-import Order from './Order'
+import { Order } from '../../components'
+import { db } from '../../Helpers/firebase'
+import { useStateValue } from '../../stateProvider/StateProvider'
+import { OrdersContainer, OrdersDiv, UsersOrders } from './OrdersPage.elements'
 
-function Orders() {
-  const [{ cart, user }, dispatch] = useStateValue()
+function OrdersPage() {
+  const [{ user }] = useStateValue()
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
     if (user) {
-      // How to pull the data from the data base.
       db.collection('users')
         .doc(user?.uid)
         .collection('orders')
@@ -30,7 +29,7 @@ function Orders() {
 
   return (
     <OrdersContainer>
-      <h1>Your Orders</h1>
+      <UsersOrders>Your Orders</UsersOrders>
       <OrdersDiv>
         {orders?.map((order) => (
           <Order order={order} key={order.id} />
@@ -40,13 +39,4 @@ function Orders() {
   )
 }
 
-export default Orders
-
-const OrdersContainer = styled.div`
-  padding: 20px 80px;
-  & > h1 {
-    margin: 30px 0;
-  }
-`
-
-const OrdersDiv = styled.div``
+export default OrdersPage

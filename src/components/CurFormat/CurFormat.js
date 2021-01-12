@@ -1,8 +1,8 @@
 import React from 'react'
-import { getCartTotal } from '../stateProvider/reducer'
+import { getCartTotal } from '../../stateProvider/reducer'
 import CurrencyFormat from 'react-currency-format'
-import { useStateValue } from '../stateProvider/StateProvider'
-import { getQuantityInCart } from '../stateProvider/reducer'
+import { useStateValue } from '../../stateProvider/StateProvider'
+import { getQuantityInCart } from '../../stateProvider/reducer'
 
 function CurFormat() {
   const [{ cart, user }, dispatch] = useStateValue()

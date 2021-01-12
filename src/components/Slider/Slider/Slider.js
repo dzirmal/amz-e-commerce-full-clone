@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import Slide from './Slide'
 
 // import { Button } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+
+import Slide from '../Slide/Slide'
+import { Button, SliderContainer } from './Slider.elements'
 
 function Slider() {
   const [xTranslation, setXTranslation] = useState(0)
@@ -21,7 +23,7 @@ function Slider() {
     'https://images-na.ssl-images-amazon.com/images/G/01/kindle/journeys/ZGNjMmZhYmUt/ZGNjMmZhYmUt-MDNjMDg4ZDgt-w1500._CB416703268_.jpg',
     'https://images-na.ssl-images-amazon.com/images/G/01/digital/video/merch/2020/Other/RB-3092_SVOD_TheSecret_DaretoDream/Amazon_GW_DesktopTallHero_RB-3092_SVOD_TheSecret_DaretoDream_v2_1500x600._CB418652501_.jpg',
   ]
-  const [autoPlay, setAutoPlay] = useState(12)
+  const [autoPlay, setAutoPlay] = useState(3)
 
   const autoPlayRef = useRef()
 
@@ -71,37 +73,3 @@ function Slider() {
 }
 
 export default Slider
-
-const SliderContainer = styled.div`
-  display: flex;
-  position: relative;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: -150px;
-  overflow: hidden;
-`
-
-const Button = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10%;
-  border: 1px solid lightgray;
-  border-radius: 50%;
-  height: 100px;
-  background: none;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-  align-items: center;
-  &:hover {
-    background: rgba(0, 0, 0, 0.356);
-  }
-  &.go__left {
-    left: 0;
-  }
-  &.go__right {
-    right: 0;
-  }
-`
